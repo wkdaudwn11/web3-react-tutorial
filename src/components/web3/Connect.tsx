@@ -1,14 +1,17 @@
 import React from 'react';
 import { useWeb3React } from '@web3-react/core';
-import { injected } from './connector';
+import { injected } from '../../helpers/connector';
+import { useEagerConnect, useInactiveListener } from '../../hooks/useInjected';
 
 interface ConnectProps {
 	children: React.ReactNode;
 }
 
 const Connect: React.FC<ConnectProps> = ({ children }) => {
-	const { active, activate } = useWeb3React();
+	const tried = useEagerConnect();
+	useInactiveListener(!tried);
 
+	const { active, activate } = useWeb3React();
 	const onError = (err: any) => {
 		console.error(err);
 	};
