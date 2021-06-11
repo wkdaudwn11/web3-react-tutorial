@@ -11,8 +11,8 @@ const Header = () => {
 
 	return (
 		<>
-			<h1 style={{ margin: '1rem', textAlign: 'right' }}>{active ? '🟢' : error ? '🔴' : '🟠'}</h1>
-			<h3
+			<h3 style={{ margin: '1rem', textAlign: 'right' }}>{active ? '🟢' : error ? '🔴' : '🟠'}</h3>
+			<h6
 				style={{
 					display: 'grid',
 					gridGap: '1rem',
@@ -27,7 +27,7 @@ const Header = () => {
 				<Account />
 				<Balance />
 				<InjectedButton />
-			</h3>
+			</h6>
 		</>
 	);
 };
