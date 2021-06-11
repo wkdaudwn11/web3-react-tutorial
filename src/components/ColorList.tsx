@@ -19,7 +19,7 @@ const ColorList = ({ colors }: PropsTypes) => {
 
 const ColorItem = ({ color }: { color: string }) => {
 	return (
-		<Col>
+		<Col md={2} style={{ marginBottom: 16 }}>
 			<span>{color}</span>
 			<div style={{ backgroundColor: color, textAlign: 'center', padding: '12px 0', border: '1px solid black' }} />
 		</Col>

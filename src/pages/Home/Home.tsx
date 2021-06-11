@@ -43,6 +43,33 @@ const Home = () => {
 		if (inputColorArr[0] !== '') {
 			alert('색상은 반드시 #으로 시작해야 합니다.');
 		}
+
+		const colorCheck = colors.find((color) => color === inputColor);
+		if (colorCheck) {
+			alert('이미 등록되어 있는 색상을 Mint 할 순 없습니다.');
+			return;
+		}
+
+		mint(inputColor);
+	}
+
+	function mint(color: string): void {
+		contract.methods
+			.mint(color)
+			.send({ from: account })
+			.on('transactionHash', (hash: string) => {
+				console.log('hash >', hash);
+				setColors([...colors, color]);
+			})
+			.on('error', function (error: Error) {
+				console.log('error >', error);
+				// if (error && error.code !== 4001) {
+				alert('예기치 못한 에러가 발생하여 Mint가 종료되었습니다.');
+				// }
+			})
+			.on('receipt', (receipt: any) => {
+				console.log('receipt >', receipt);
+			});
 	}
 
 	async function loadWeb3() {
