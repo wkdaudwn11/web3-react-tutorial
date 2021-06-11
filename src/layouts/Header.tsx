@@ -4,6 +4,7 @@ import ChainId from '../components/ChainId';
 import BlockNumber from '../components/BlockNumber';
 import Account from '../components/Account';
 import Balance from '../components/Balance';
+import InjectedButton from '../components/InjectedButton';
 
 const Header = () => {
 	const { active, error } = useWeb3React();
@@ -25,6 +26,7 @@ const Header = () => {
 				<BlockNumber />
 				<Account />
 				<Balance />
+				<InjectedButton />
 			</h3>
 		</>
 	);
